@@ -1,14 +1,20 @@
 import express from 'express';
+import cors from 'cors';
 import bookRoutes from "./routes/bookRoutes.js";
 
 import studentRoutes from "./routes/studentRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
+
+let corsOptions = {
+    origin: 'http://localhost:5173'
+};
 
 //create expres app
 const app = express();
 
 //to.parse.incoming.data
 app.use(express.json());
+app.use(cors(corsOptions));
 
 //This use to Log the request on the console
 app.use((req, res, next) => {
